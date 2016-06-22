@@ -15,11 +15,13 @@
 	$row = mysqli_fetch_assoc($result);
 	$hashpass = $row['Password'];
 
-	if($result == $username && password_verify($password, $hashpass))
+	if(password_verify($password, $hashpass))
 	{
 		//if successfull send to login page
 		$_SESSION["username"] = $username;
 		header("Location:feed.php");
+	}else if($result = 0){
+		echo "User not registered";
 	}else{
 		//throw error
 		echo "Incorrect login, try again!";

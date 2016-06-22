@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php
-	include('../database.php');
+	include('database.php');
 	
 	session_start();
 	$conn = connect_db();
@@ -28,11 +28,21 @@
 	if ($num_of_rows == 0) {
 		echo "<p>No new posts to show!</p>";
 	}
-	//show all posts on myfacebook
+	$result_comments = mysqli_query($conn, "SELECT * FROM comments");
+	//show all posts and comments on myfacebook
 	for($i = 0; $i < $num_of_rows; $i++){
 		$row = mysqli_fetch_row($result_posts);
-		echo "$row[3] said $row[1] ($row[5])";
-		echo "<form action='likes.php' method='POST'> <input type='hidden' name='PID' value='$row[0]'> <input type='submit' value='Like'></form>";
+		$comment = mysqli_fetch_assoc($result_comments);
+		echo "$row[2] said $row[1] ($row[5])";
+		echo "<br>";
+		echo $comment['content']." commented ".$comment['UID']." (".$comment['name'].")";
+		echo "<form action='likes.php' method='POST'> 
+		<input type='hidden' name='PID' value='$row[0]'> 
+		<input type='submit' value='Like'></form>";
+		echo "<form action='comments.php' method='POST'>
+		<p><textarea name='content'>Comment...</textarea></p>
+		<input type='hidden' name='UID' value='$row[1]'>
+		<p><input type='submit' value='Comment!'></p></form>";
 		echo "<br>";
 	}
 ?>
