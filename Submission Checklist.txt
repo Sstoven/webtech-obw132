@@ -1,0 +1,15 @@
+Submission Checklist
+You must complete the “Your status” column of this evaluation and hand in as part of your lab in order for it to be graded. If the item works and you feel it meets the specifications, you can just put a checkmark. If the item doesn’t meet the specification, provide a detailed explanation. If you say the item works and it doesn’t, you may be penalized.
+
+Item                                  Your status                Evaluation
+-------------------------------|------------------------|------------------------
+Signup Page                    |        Check           |
+                               |                        |
+Password Hashing               |        Check           |
+                               |                        |
+Comments implementation        |        Check           |
+                               |                        |
+Sanitization                   |  It is completed but   |
+                               |  not added to the      |
+                               |  functions.php, will   |
+                               |  add next time         |
